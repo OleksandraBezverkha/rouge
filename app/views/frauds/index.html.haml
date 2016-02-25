@@ -1,0 +1,149 @@
+.container-fluid
+  .row
+    .col-xs-2
+    .col-xs-4
+      =search_form_for @search do |f|
+        =f.search_field :firstname_or_lastname_or_patronymic_or_icq_or_type_or_name_cont
+        =f.submit class:"search"
+      %br
+      %br
+      %strong
+        Frauds list
+      %br
+      - @frauds.each do |fraud|
+        %br
+        .panel.panel-info
+          .panel-heading
+            -unless fraud.firstname.blank?
+              Firstname:
+              %strong
+                = fraud.firstname
+            -unless fraud.lastname.blank?
+              Lastname:
+              %strong
+                = fraud.lastname
+            -unless fraud.patronymic.blank?
+              Patronymic:
+              %strong
+                = fraud.patronymic
+          .panel-body
+            -unless fraud.icq.blank?
+              icq:
+              %strong
+                = fraud.icq
+            %br
+            -unless fraud.type.blank?
+              Type:
+              %strong
+                = fraud.type
+            %br
+            -unless fraud.name.blank?
+              Name:
+              %strong
+                = fraud.name
+            %br
+            -unless fraud.description.blank?
+              Description:
+              %strong
+                = fraud.description
+            -unless fraud.cards.empty?
+              Card:
+              %strong
+                - fraud.cards.each do|card|
+                  %br
+                  =card.card
+              %br
+            -unless fraud.phones.empty?
+              Phone:
+              %strong
+                - fraud.phones.each do|phone|
+                  %br
+                  =phone.phone
+              %br
+            -unless fraud.emails.empty?
+              Email:
+              %strong
+                - fraud.emails.each do|email|
+                  %br
+                  =email.email
+              %br
+            -unless fraud.skypes.empty?
+              Skype:
+              %strong
+                - fraud.skypes.each do|skype|
+                  %br
+                  =skype.skype
+              %br
+            -unless fraud.cities.empty?
+              City:
+              %strong
+                - fraud.cities.each do|city|
+                  %br
+                  =city.city
+              %br
+            -unless fraud.regions.empty?
+              Region:
+              %strong
+                - fraud.regions.each do|region|
+                  %br
+                  =region.region
+            -#-unless fraud.descriptions.empty?
+            -#  description:
+            -#  %strong
+            -#    - fraud.descriptions.each do|description|
+            -#      %br
+            -#      =description.description
+                  -#= '; ' unless card == fraud.cards.last
+        -#%br
+        -#%br
+        -#-unless fraud.firstname.nil?
+        -#  Firstname:
+        -#  %strong
+        -#    = fraud.firstname
+        -#%br
+        -#-unless fraud.lastname.nil?
+        -#  Lastname:
+        -#  %strong
+        -#    = fraud.lastname
+        -#%br
+        -#-unless fraud.patronymic.nil?
+        -#  Patronymic:
+        -#  %strong
+        -#    = fraud.patronymic
+        -#%br
+        -#-unless fraud.icq.nil?
+        -#  icq:
+        -#  %strong
+        -#    = fraud.icq
+        -#%br
+        -#-unless fraud.type.nil?
+        -#  Type:
+        -#  %strong
+        -#    = fraud.type
+        -#%br
+        -#-unless fraud.name.nil?
+        -#  Name:
+        -#  %strong
+        -#    = fraud.name
+
+
+    -#.col-xs-4
+    -#
+    -#  + add fraud
+    -#  %br
+    -#    %br
+    -#  =form_for Fraud.new do |f|
+    -#    = f.text_field :firstname, placeholder: 'firsname'
+    -#    %br
+    -#    = f.text_field :lastname, placeholder: 'lastname'
+    -#    %br
+    -#    = f.text_field :patronymic,placeholder: 'patronymic'
+    -#    %br
+    -#    = f.text_field :icq,placeholder: 'icq'
+    -#    %br
+    -#    = f.text_field :type,placeholder: 'type'
+    -#    %br
+    -#    = f.text_field :name,placeholder: 'name'
+    -#    %br
+    -#    =f.submit class: "btn btn-submit"
+    .col-xs-2

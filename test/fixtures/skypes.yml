@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  skype: MyString
+  fraud_id: 
+
+two:
+  skype: MyString
+  fraud_id: 

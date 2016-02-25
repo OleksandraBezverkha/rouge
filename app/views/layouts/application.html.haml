@@ -1,0 +1,39 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title
+      Rouge
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %header.navbar.navbar-fixed-top.navbar-inverse
+      .navbar-inner
+        .container
+          .pull-left
+            = link_to "Rouge", root_path,class:"rouge"
+            %br
+          .navbar-right
+            - if user_signed_in?
+              %br
+              Hello
+              = succeed "" do
+                %strong= current_user.email
+              -#-if current_user.image.small_thumb.blank? || !current_user.image.small_thumb.file.exists?
+              -#  = image_tag("default.png", size: "30x30", alt: "Avatar",class:"img-circle")
+              -#-else
+              -#  = image_tag(current_user.image.small_thumb,class:"img-circle")
+              .pull-right
+                = link_to "edit profile", edit_user_registration_path, :class => 'navbar-link',class:"btn btn-default menu"
+                =link_to "+add fraud",new_fraud_path, :class => 'navbar-link',class:"btn btn-default menu"
+                =link_to "logout", destroy_user_session_path, method: :delete, :class => 'navbar-link',class:"btn btn-default menu"
+
+            - else
+              =t :hello_guest
+              =link_to "login", new_user_session_path, :class => 'navbar-link',class:"btn btn-default menu"
+    - if notice
+      %p.alert.alert-success= notice
+    - if alert
+      %p.alert.alert-danger= alert
+    = yield
