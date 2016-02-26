@@ -13,39 +13,44 @@ class FraudsController < ApplicationController
   def create
     @fraud=Fraud.create!(fraud_params)
 
-    unless params[:fraud][:cards].blank?
+
+
+    if params[:fraud][:cards].any? {|element| element.last!= '' }
       params[:fraud][:cards].each do |card|
-        @fraud.cards.create(card: card.last) # card.last - card.value
+        @fraud.cards.create(card: card.last) unless card.last.blank?
       end
     end
-    unless params[:fraud][:phones].blank?
+
+
+
+    # unless params[:fraud][:cards].first.last.blank?
+    #   params[:fraud][:cards].each do |card|
+    #     @fraud.cards.create(card: card.last) # card.last - card.value
+    #   end
+    # end
+    unless params[:fraud][:phones].first.last.blank?
       params[:fraud][:phones].each do |phone|
         @fraud.phones.create(phone: phone.last) # card.last - card.value
       end
     end
-    unless params[:fraud][:emails].blank?
+    unless params[:fraud][:emails].first.last.blank?
       params[:fraud][:emails].each do |email|
         @fraud.emails.create(email: email.last) # card.last - card.value
       end
     end
-    unless params[:fraud][:skypes].blank?
+    unless params[:fraud][:skypes].first.last.blank?
       params[:fraud][:skypes].each do |skype|
         @fraud.skypes.create(skype: skype.last) # card.last - card.value
       end
     end
-    unless params[:fraud][:cities].blank?
+    unless params[:fraud][:cities].first.last.blank?
       params[:fraud][:cities].each do |city|
         @fraud.cities.create(city: city.last) # card.last - card.value
       end
     end
-    unless params[:fraud][:regions].blank?
+    unless params[:fraud][:regions].first.last.blank?
       params[:fraud][:regions].each do |region|
         @fraud.regions.create(region: region.last) # card.last - card.value
-      end
-    end
-    unless params[:fraud][:descriptions].blank?
-      params[:fraud][:descriptions].each do |description|
-        @fraud.descriptions.create(description: description.last) # card.last - card.value
       end
     end
     if @fraud.save

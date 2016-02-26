@@ -1,4 +1,5 @@
 class Fraud < ActiveRecord::Base
+  self.inheritance_column = nil
   has_many :cards, :dependent => :destroy
   has_many :phones, :dependent => :destroy
   has_many :emails, :dependent => :destroy

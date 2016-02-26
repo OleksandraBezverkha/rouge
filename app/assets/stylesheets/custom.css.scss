@@ -8,11 +8,14 @@ body{
   overflow-x: hidden;
   overflow-y: auto;
   margin: 150px;
+  background-color: #3c2e48;
+  color: white;
   //margin-left: 150px;
 }
-.container{
+.navbar-inner{
   //margin-bottom: 0 !important;
   //margin:10px 25%;
+  background-color: #2e223a;
 }
 .row{
   margin: 10px 10px 10px 10px !important;
@@ -30,3 +33,10 @@ body{
 .rouge{
   margin-top: 10px !important;
 }
+input,textarea,select{padding: 6px;
+margin:10px 0px;width:400px;color: #000000;}
+//select{padding: 10px 35px; }
+.panel-body{color:black;}
+.panel-heading{background-color: #503e64
+}
+#user_remember_me{width:0px;}

@@ -1,18 +1,13 @@
 .container-fluid
   .row
-    .col-xs-2
+    .col-xs-1
     .col-xs-4
-      =search_form_for @search do |f|
-        =f.search_field :firstname_or_lastname_or_patronymic_or_icq_or_type_or_name_cont
-        =f.submit class:"search"
-      %br
-      %br
       %strong
         Frauds list
       %br
       - @frauds.each do |fraud|
         %br
-        .panel.panel-info
+        .panel.panel-default
           .panel-heading
             -unless fraud.firstname.blank?
               Firstname:
@@ -87,63 +82,44 @@
                 - fraud.regions.each do|region|
                   %br
                   =region.region
-            -#-unless fraud.descriptions.empty?
-            -#  description:
-            -#  %strong
-            -#    - fraud.descriptions.each do|description|
-            -#      %br
-            -#      =description.description
-                  -#= '; ' unless card == fraud.cards.last
-        -#%br
-        -#%br
-        -#-unless fraud.firstname.nil?
-        -#  Firstname:
-        -#  %strong
-        -#    = fraud.firstname
-        -#%br
-        -#-unless fraud.lastname.nil?
-        -#  Lastname:
-        -#  %strong
-        -#    = fraud.lastname
-        -#%br
-        -#-unless fraud.patronymic.nil?
-        -#  Patronymic:
-        -#  %strong
-        -#    = fraud.patronymic
-        -#%br
-        -#-unless fraud.icq.nil?
-        -#  icq:
-        -#  %strong
-        -#    = fraud.icq
-        -#%br
-        -#-unless fraud.type.nil?
-        -#  Type:
-        -#  %strong
-        -#    = fraud.type
-        -#%br
-        -#-unless fraud.name.nil?
-        -#  Name:
-        -#  %strong
-        -#    = fraud.name
+    .col-xs-3
+    .col-xs-4
+      %strong
+        Search fraud
+      %br
+      %br
+      =search_form_for @search do |f|
+        -#= f.label :firstname
+
+        = f.label :select_type
+        %br
+        =f.select :type_cont, ['','частное лицо', 'фирма','покупатель']
+        %br
+        =f.search_field :firstname, placeholder: 'firstname'
+        %br
+        -#= f.label :lastname
+        =f.search_field :lastname_cont, placeholder: 'lastname'
+        %br
+        -#= f.label :patronymic
+        =f.search_field :patronymic_cont, placeholder: 'patronymic'
+        %br
+        -#= f.label :icq
+        =f.search_field :icq_cont, placeholder: 'icq'
+        %br
+        -#= f.label :name
+        =f.search_field :name, placeholder: 'name'
+        %br
+        =f.search_field :cards_card_start, placeholder: 'card'
+        %br
+        =f.search_field :phones_phone_start, placeholder: 'phone'
+        %br
+        =f.search_field :emails_email_start, placeholder: 'email'
+        %br
+        =f.search_field :skypes_skype_start, placeholder: 'skype'
+        %br
+        =f.search_field :cities_city_start, placeholder: 'city'
+        %br
+        =f.search_field :regions_region_start, placeholder: 'region'
 
 
-    -#.col-xs-4
-    -#
-    -#  + add fraud
-    -#  %br
-    -#    %br
-    -#  =form_for Fraud.new do |f|
-    -#    = f.text_field :firstname, placeholder: 'firsname'
-    -#    %br
-    -#    = f.text_field :lastname, placeholder: 'lastname'
-    -#    %br
-    -#    = f.text_field :patronymic,placeholder: 'patronymic'
-    -#    %br
-    -#    = f.text_field :icq,placeholder: 'icq'
-    -#    %br
-    -#    = f.text_field :type,placeholder: 'type'
-    -#    %br
-    -#    = f.text_field :name,placeholder: 'name'
-    -#    %br
-    -#    =f.submit class: "btn btn-submit"
-    .col-xs-2
+        =f.submit class:"search"

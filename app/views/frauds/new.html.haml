@@ -5,7 +5,12 @@
     %br
       %br
     =form_for Fraud.new do |f|
-      = f.text_field :firstname, placeholder: 'firsname'
+      -#= f.text_field :type,placeholder: 'type'
+      = f.label :select_type
+      %br
+      =f.select :type, ['','частное лицо', 'фирма','покупатель']
+      %br
+      = f.text_field :firstname, placeholder: 'firstname'
       %br
       = f.text_field :lastname, placeholder: 'lastname'
       %br
@@ -13,33 +18,36 @@
       %br
       = f.text_field :icq,placeholder: 'icq'
       %br
-      = f.text_field :type,placeholder: 'type'
-      %br
       = f.text_field :name,placeholder: 'name'
       %br
       = f.text_area :description,placeholder: 'description'
       %br
       -#= f.text_field :cards,placeholder: 'card', value: ''
-      =f.fields_for :cards do|cards_form|
-        = cards_form.text_field :card1,placeholder: 'card'
-        %br
-        = cards_form.text_field :card2,placeholder: 'card'
-        %br
-      =f.fields_for :phones do|phones_form|
-        = phones_form.text_field :phone1,placeholder: 'phone'
-        %br
-      =f.fields_for :emails do|emails_form|
-        = emails_form.text_field :email1,placeholder: 'email'
-        %br
-      =f.fields_for :skypes do|skypes_form|
-        = skypes_form.text_field :skype1,placeholder: 'skype'
-        %br
-      =f.fields_for :cities do|cities_form|
-        = cities_form.text_field :city1,placeholder: 'city'
-        %br
-      =f.fields_for :regions do|regions_form|
-        = regions_form.text_field :region1,placeholder: 'region'
-        %br
+      .field_card
+        =f.fields_for :cards do|cards_form|
+          = cards_form.text_field :card1,placeholder: 'card'
+        .btn.btn-default.btn-card{:onclick => "AddFieldCard()"}+add
+      .field_phone
+        =f.fields_for :phones do|phones_form|
+          = phones_form.text_field :phone1,placeholder: 'phone'
+        .btn.btn-default.btn-card{:onclick => "AddFieldPhone()"}+add
+      .field_email
+        =f.fields_for :emails do|emails_form|
+          = emails_form.text_field :email1,placeholder: 'email'
+        .btn.btn-default.btn-card{:onclick => "AddFieldEmail()"}+add
+      .field_skype
+        =f.fields_for :skypes do|skypes_form|
+          = skypes_form.text_field :skype1,placeholder: 'skype'
+        .btn.btn-default.btn-card{:onclick => "AddFieldSkype()"}+add
+      .field_city
+        =f.fields_for :cities do|cities_form|
+          = cities_form.text_field :city1,placeholder: 'city'
+        .btn.btn-default.btn-card{:onclick => "AddFieldCity()"}+add
+      .field_region
+        =f.fields_for :regions do|regions_form|
+          = regions_form.text_field :region1,placeholder: 'region'
+        .btn.btn-default.btn-card{:onclick => "AddFieldRegion()"}+add
+      %br
       -#=f.fields_for :descriptions do|descriptions_form|
       -#  = descriptions_form.text_erea :description1,placeholder: 'description'
       -#  %br
