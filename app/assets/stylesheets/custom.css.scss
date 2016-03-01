@@ -28,10 +28,12 @@ body{
 .menu{
   margin-bottom: 10px !important;
   margin-top: -5px !important;
+  margin-left: 10px;
 
 }
 .rouge{
   margin-top: 10px !important;
+  padding-top: 10px;
 }
 input,textarea,select{padding: 6px;
 margin:10px 0px;width:400px;color: #000000;}
@@ -39,4 +41,4 @@ margin:10px 0px;width:400px;color: #000000;}
 .panel-body{color:black;}
 .panel-heading{background-color: #503e64
 }
-#user_remember_me{width:0px;}
+#user_remember_me,#fraud_type__,#fraud_type_{width:0px}

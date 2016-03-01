@@ -4,11 +4,21 @@
     + add fraud
     %br
       %br
-    =form_for Fraud.new do |f|
-      -#= f.text_field :type,placeholder: 'type'
+
+    =form_for @fraud do |f|
       = f.label :select_type
+      - @fraud.errors.full_messages.each do |msg|
+        %li= msg
       %br
-      =f.select :type, ['','частное лицо', 'фирма','покупатель']
+      -#=f.radio_button('fraud','type','частноелицо')
+      -#=f.radio_button('fraud','type' 'фирма')
+      -#=f.radio_button('fraud', 'type','покупатель')
+      = f.radio_button :type, 'частное лицо',checked:"checked"
+      = f.label :type, 'частное лицо', value:'частное лицо'
+      = f.radio_button :type, 'фирма'
+      = f.label :type, 'фирма', value:'фирма'
+      = f.radio_button :type, 'покупатель'
+      = f.label :type, 'покупатель', value:'покупатель'
       %br
       = f.text_field :firstname, placeholder: 'firstname'
       %br
@@ -29,11 +39,11 @@
         .btn.btn-default.btn-card{:onclick => "AddFieldCard()"}+add
       .field_phone
         =f.fields_for :phones do|phones_form|
-          = phones_form.text_field :phone1,placeholder: 'phone'
+          = phones_form.text_field :phone1,  placeholder: 'phone'
         .btn.btn-default.btn-card{:onclick => "AddFieldPhone()"}+add
       .field_email
         =f.fields_for :emails do|emails_form|
-          = emails_form.text_field :email1,placeholder: 'email'
+          = emails_form.text_field :email1,type:"email",placeholder: 'email'
         .btn.btn-default.btn-card{:onclick => "AddFieldEmail()"}+add
       .field_skype
         =f.fields_for :skypes do|skypes_form|

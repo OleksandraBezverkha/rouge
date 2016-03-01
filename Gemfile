@@ -35,6 +35,7 @@ gem 'carrierwave'#, github: 'carrierwaveuploader/carrierwave'
 gem 'rmagick'
 gem 'mini_magick', '~> 4.2.10'
 gem 'ransack'
+gem 'validates_email_format_of'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

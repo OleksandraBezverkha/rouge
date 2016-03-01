@@ -20,7 +20,7 @@ $(document).ready ->
   @AddFieldEmail=->
     field=$(".field_email")
     num = field.find("input").length+1;
-    $('<br><input type="text" id="fraud_emails_email'+num+'" name="fraud[emails][email'+num+']" placeholder="email" />').appendTo(field)
+    $('<br><input type="email" id="fraud_emails_email'+num+'" name="fraud[emails][email'+num+']" placeholder="email" />').appendTo(field)
   @AddFieldSkype=->
     field=$(".field_skype")
     num = field.find("input").length+1;
