@@ -34,7 +34,11 @@ class FraudsController < ApplicationController
       # end
       unless params[:fraud][:phones].first.last.blank?
         params[:fraud][:phones].each do |phone|
-          @fraud.phones.create(phone: phone.last) # card.last - card.value
+          # if @fraud.phones.new(phone: phone.last).valid?
+          @fraud.phones.create!(phone: phone.last) # card.last - card.value
+          # else
+          #   render(:action => :new)
+          # end
         end
       end
       unless params[:fraud][:emails].first.last.blank?
@@ -64,6 +68,6 @@ class FraudsController < ApplicationController
   end
   private
   def fraud_params
-    params.require(:fraud).permit( :name,:firstname,:lastname,:patronymic,:icq,:type,:status,:user_id )
+    params.require(:fraud).permit( :name,:firstname,:lastname,:patronymic,:icq,:type,:status,:description,:cards,:user_id )
   end
 end

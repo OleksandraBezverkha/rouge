@@ -36,9 +36,21 @@ body{
   padding-top: 10px;
 }
 input,textarea,select{padding: 6px;
-margin:10px 0px;width:400px;color: #000000;}
+margin:10px 0px;width:400px;color: #000000;
+  padding-right: 40px;}
 //select{padding: 10px 35px; }
 .panel-body{color:black;}
 .panel-heading{background-color: #503e64
 }
 #user_remember_me,#fraud_type__,#fraud_type_{width:0px}
+.add,.remove{margin-left: -40px;
+border: 0px;
+padding: 7px 13px;
+margin-top: -2px;
+background-color: #e5f1dd;
+}
+.remove{margin-left: -35px;
+  background-color: #f1e1da;
+}
+.add:hover{background-color: rgba(205, 237, 196, 0.91);}
+.remove:hover{background-color: #f1c7c2;}

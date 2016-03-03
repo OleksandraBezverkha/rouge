@@ -36,27 +36,27 @@
       .field_card
         =f.fields_for :cards do|cards_form|
           = cards_form.text_field :card1,placeholder: 'card'
-        .btn.btn-default.btn-card{:onclick => "AddFieldCard()"}+add
+        .btn.btn-default.add{:onclick => "AddFieldCard()"}+
       .field_phone
         =f.fields_for :phones do|phones_form|
-          = phones_form.text_field :phone1,  placeholder: 'phone'
-        .btn.btn-default.btn-card{:onclick => "AddFieldPhone()"}+add
+          = phones_form.text_field :phone1, maxlength:"10",minlength:"10", placeholder: 'phone'
+        .btn.btn-default.add{:onclick => "AddFieldPhone()"}+
       .field_email
         =f.fields_for :emails do|emails_form|
           = emails_form.text_field :email1,type:"email",placeholder: 'email'
-        .btn.btn-default.btn-card{:onclick => "AddFieldEmail()"}+add
+        .btn.btn-default.add{:onclick => "AddFieldEmail()"}+
       .field_skype
         =f.fields_for :skypes do|skypes_form|
           = skypes_form.text_field :skype1,placeholder: 'skype'
-        .btn.btn-default.btn-card{:onclick => "AddFieldSkype()"}+add
+        .btn.btn-default.add{:onclick => "AddFieldSkype()"}+
       .field_city
         =f.fields_for :cities do|cities_form|
           = cities_form.text_field :city1,placeholder: 'city'
-        .btn.btn-default.btn-card{:onclick => "AddFieldCity()"}+add
+        .btn.btn-default.add{:onclick => "AddFieldCity()"}+
       .field_region
         =f.fields_for :regions do|regions_form|
           = regions_form.text_field :region1,placeholder: 'region'
-        .btn.btn-default.btn-card{:onclick => "AddFieldRegion()"}+add
+        .btn.btn-default.add{:onclick => "AddFieldRegion()"}+
       %br
       -#=f.fields_for :descriptions do|descriptions_form|
       -#  = descriptions_form.text_erea :description1,placeholder: 'description'

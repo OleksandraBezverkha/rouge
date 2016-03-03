@@ -11,7 +11,8 @@ class Fraud < ActiveRecord::Base
   validates :lastname, length: { maximum: 50 }
   validates :patronymic, length: { maximum: 50 }
   validates :description, length: { maximum: 500 }
-  validates :phones,length: {maximum: 10 }
+  validates_associated :phones,length: {maximum: 10 }
+  # validates :phones,length: {maximum: 10 }
   # validates :description, length: { maximum: 10 }
   # has_many :descriptions, :dependent => :destroy
   default_scope ->{order('created_at DESC')}
